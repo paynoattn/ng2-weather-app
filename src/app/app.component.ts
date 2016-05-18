@@ -1,7 +1,7 @@
 /*
  * Angular 2 decorators and services
  */
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 
 import { routes } from './routes'; 
@@ -27,19 +27,9 @@ const appTemplate = require('./app.html');
 
 @RouteConfig(routes)
 
-export class App implements OnInit {
+export class App {
   
   public appRoutes: Object = routes;
-  public loading: boolean = false;
-
-  constructor() {
-
-  }
-
-  ngOnInit() {
-    console.log('Hello from App');
-  }
-
 }
 
 /*
