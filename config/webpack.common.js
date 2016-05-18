@@ -230,19 +230,6 @@ module.exports = {
     }),
 
     /*
-     * Plugin: CopyWebpackPlugin
-     * Description: Copy files and directories in webpack.
-     *
-     * Copies project static assets.
-     *
-     * See: https://www.npmjs.com/package/copy-webpack-plugin
-     */
-    new CopyWebpackPlugin([{
-      from: 'src/assets',
-      to: 'assets'
-    }]),
-
-    /*
      * Plugin: HtmlWebpackPlugin
      * Description: Simplifies creation of HTML files to serve your webpack bundles.
      * This is especially useful for webpack bundles that include a hash in the filename
