@@ -1,8 +1,12 @@
 /*
  * Angular 2 decorators and services
  */
-import { Component, ViewEncapsulation } from '@angular/core';
-import { RouteConfig, Router } from '@angular/router-deprecated';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+
+import { routes } from './routes'; 
+
+import { Search } from './search/search.component';
 
 /*
  * App Component
@@ -17,12 +21,16 @@ const appTemplate = require('./app.html');
   styles: [
     require('./app.scss')
   ],
-  template: appTemplate
+  template: appTemplate,
+  directives: [ ROUTER_DIRECTIVES, Search ]
 })
 
-export class App {
+@RouteConfig(routes)
+
+export class App implements OnInit {
   
-  loading = false;
+  public appRoutes: Object = routes;
+  public loading: boolean = false;
 
   constructor() {
 
