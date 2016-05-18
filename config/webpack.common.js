@@ -4,6 +4,7 @@
 
 const webpack = require('webpack');
 const helpers = require('./helpers');
+const autoprefixer = require('autoprefixer');
 
 /*
  * Webpack Plugins
@@ -165,10 +166,10 @@ module.exports = {
        *
        * See: https://github.com/webpack/raw-loader
        */
-      {
-        test: /\.css$/,
-        loader: 'raw-loader'
-      },
+      { 
+         test: /\.scss$/, 
+         loader: 'raw-loader!postcss-loader!sass-loader'
+       },
 
       /* Raw loader support for *.html
        * Returns file content as string
@@ -177,12 +178,18 @@ module.exports = {
        */
       {
         test: /\.html$/,
-        loader: 'raw-loader',
-        exclude: [helpers.root('src/index.html')]
+        loader: 'html-loader',
+        exclude: [helpers.root('www/index.html')]
       }
 
     ]
 
+  },
+  postcss: function () {
+    return {
+      defaults: [autoprefixer],
+      cleaner:  [autoprefixer({ browsers: [['last 5 version', 'ie >= 11']] })]
+    };
   },
 
   /*
@@ -244,8 +251,10 @@ module.exports = {
      * See: https://github.com/ampedandwired/html-webpack-plugin
      */
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      chunksSortMode: 'dependency'
+      template: 'www/index.html',
+      chunksSortMode: 'dependency',
+      inject: 'body',
+      hash: true
     })
 
   ],

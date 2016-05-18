@@ -6,7 +6,16 @@ module.exports = function(config) {
   var testWebpackConfig = require('./webpack.test.js');
 
   config.set({
-
+    
+    plugins: [
+      require("karma-jasmine"),
+      require("karma-mocha-reporter"),
+      require("karma-coverage"),
+      require("karma-webpack"),
+      require("karma-sourcemap-loader"),
+      require("karma-phantomjs-launcher")
+    ],
+    
     // base path that will be used to resolve all patterns (e.g. files, exclude)
     basePath: '',
 
@@ -84,7 +93,7 @@ module.exports = function(config) {
      * Continuous Integration mode
      * if true, Karma captures browsers, runs the tests and exits
      */
-    singleRun: true
+    singleRun: false
   });
 
 };

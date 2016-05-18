@@ -1,0 +1,34 @@
+@import "../node_modules/susy/sass/susy";
+@import "mixins";
+
+$screen-phone: 480px;
+$screen-phablet: 640px;
+$screen-tablet: 720px;
+$screen-lg: 960px;
+$screen-xlg: 1080px;
+$screen-xxlg: 1440px;
+$screen-hd: 1920px;
+$screen-uhd: 2560px;
+$screen-4k: 3840px;
+
+
+//colors
+$app-primary: #139CE8;
+$app-secondary: #bf1e2e;
+$app-tertiary: #bfbfbf;
+$dark: #333;
+$light: #f2f2f2;
+
+// animations
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.rotating {
+  animation: rotating 2s linear infinite;
+}
