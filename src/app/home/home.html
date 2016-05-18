@@ -1,0 +1,10 @@
+<h2>Get Weather</h2>
+<search-form class="home" (searchSubmit)="getWeather()"></search-form>
+<div class="weather" *ngIf="weather">
+  <h3>It is {{weather.main.temp}} in {{weather.name}}</h3>
+</div>
+<div class="error"></div>
+<div class="loading" *ngIf="busy">
+  <img src="/assets/loading.svg" alt="Loader" />
+  Getting your results.
+</div>
