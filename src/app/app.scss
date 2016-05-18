@@ -1,5 +1,110 @@
 @import "../../sass/variables";
+app {
+  display: block;
+  
+  .loading {
+    height: inherit;
+  }
+  
+  header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: $light;
+    padding: 1rem;
+    
+    @media only screen and (min-width: $screen-lg) {
+      flex-direction: row;
+    }
+    
+    h1 {
+      font-size: 1.2rem;
+      margin: 0 1rem 0 0;
+      
+      @include fixLinks(black);
+    }
+    
+    nav {
+      ul {
+        display: block;
+        padding: 0;
+        margin: 1rem;
+        
+        @media only screen and (min-width: $screen-lg) {
+          margin: 0;
+        }
+        
+        li {
+          display: inline-block;
+          list-style: none;
+          margin: 0 1rem 0 0;
+          @include fixLinks($app-primary);
+        }
+      }
+    }
+    
+    search-form {
+      margin: auto;
+      
+      @media only screen and (min-width: $screen-lg) {
+        margin: auto 0 auto auto;
+      }
+    }
+  }
 
-h1 {
-  color: red;
+  article {
+    width: 90%;
+    max-width: $screen-hd;
+    min-width: $screen-phone;
+    margin: 0 auto;
+  }
+
+  search-form {
+    display: block;
+    
+    input {
+      display: block;
+      box-sizing: border-box;
+      outline: none;
+    }
+    
+    input[type="text"] {
+      padding: 0.5rem;
+      width: 80%;
+      margin: 0 auto 1rem auto;
+    }
+    
+    input[type="submit"] {
+      padding: 0.5rem;
+      background: $app-primary;
+      border: 0;
+      color: white;
+      margin: 0 auto;
+    }
+    
+    &.top {
+      
+      input {
+        display: inline-block;
+      }
+      
+      input[type="text"] {
+        margin: 0 0.5rem 0;
+        width: inherit;
+      }
+    }
+    
+    &.home {
+      width: 50%;
+      margin: 2rem auto;
+      
+      input[type="submit"] {
+        width: 80%;
+        background: transparent;
+        border: 1px solid $app-primary;
+        color: $app-primary;
+      }
+    }
+    
+  }
 }

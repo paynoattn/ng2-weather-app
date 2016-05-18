@@ -2,13 +2,13 @@
  * Providers provided by Angular
  */
 import { bootstrap } from '@angular/platform-browser-dynamic';
-/*
+import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import { HTTP_PROVIDERS }    from '@angular/http';
 
-/*
-* App Component
-* our top level component that holds all of our components
-*/
-import { App, APP_PROVIDERS } from './app';
+import { WeatherService } from './globals/weather.service';
+
+
+import { App } from './app/app.component';
 
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
@@ -16,8 +16,12 @@ import { App, APP_PROVIDERS } from './app';
  */
 export function main(initialHmrState?: any): Promise<any> {
 
-  return bootstrap(App, [ APP_PROVIDERS])
-  .catch(err => console.error(err))
+  return bootstrap(App,[
+    ROUTER_PROVIDERS,
+    HTTP_PROVIDERS,
+    WeatherService
+  ])
+  .catch(err => console.error(err));
 }
 
 if ('development' === ENV && HMR === true) {

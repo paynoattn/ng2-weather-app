@@ -1,1 +1,19 @@
-<h1>Hello World</h1>
+<main>
+  <header>
+    <h1><a [routerLink]="['Get Weather']">Angular Weather App</a></h1>
+    <nav>
+      <ul class="app-nav">
+        <li *ngFor='let route of appRoutes'>
+              <a [routerLink]="[route.name]">
+                {{route.name}}
+              </a>
+            </li>
+      </ul>
+    </nav>
+      
+    <search-form class="top"></search-form>
+  </header>
+  <article>
+    <router-outlet></router-outlet>
+  </article>
+</main>
