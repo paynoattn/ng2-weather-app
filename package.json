@@ -12,6 +12,7 @@
     "typedoc": "typedoc",
     "typings": "typings",
     "webpack": "webpack",
+    "gulp": "gulp",
     "webpack-dev-server": "webpack-dev-server",
     "webdriver-manager": "webdriver-manager",
     "protractor": "protractor",
@@ -26,10 +27,10 @@
     "watch:dev:hmr": "npm run watch:dev -- --hot",
     "watch:test": "npm run test -- --auto-watch --no-single-run",
     "watch:prod": "npm run build:prod -- --watch",
-    "build": "npm run build:prod",
-    "prebuild:dev": "npm run clean:dist",
+    "build": "npm run clean:dist && gulp run sass && webpack --config config/webpack.dev.js --progress --profile --colors --display-error-details --display-cached",
+    "prebuild:dev": "npm run clean:dist && npm run gulp sass",
     "build:dev": "webpack --config config/webpack.dev.js --progress --profile --colors --display-error-details --display-cached",
-    "prebuild:prod": "npm run clean:dist",
+    "prebuild:prod": "npm run clean:dist && npm run gulp sass",
     "build:prod": "webpack --config config/webpack.prod.js  --progress --profile --colors --display-error-details --display-cached --bail",
     "server": "node server.js",
     "server:dev": "webpack-dev-server --config config/webpack.dev.js --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base ./www",
@@ -74,18 +75,26 @@
     "normalize-scss": "^4.2.1",
     "normalize.css": "^4.1.1",
     "postcss-loader": "^0.9.1",
+    "raw-loader": "^0.5.1",
     "rxjs": "5.0.0-beta.6",
     "sass-loader": "^3.2.0",
     "support-for": "^1.0.6",
     "susy": "^2.2.12",
-    "zone.js": "~0.6.12"
+    "typings": "^1.0.4",
+    "zone.js": "~0.6.12",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-md5-hash": "^0.0.5",
+    "webpack-merge": "^0.12.0",
+     "compression-webpack-plugin": "^0.3.1",
+    "copy-webpack-plugin": "^2.1.3",
+    "html-webpack-plugin": "^2.17.0"
   },
   "devDependencies": {
     "angular2-hmr": "~0.7.0",
     "awesome-typescript-loader": "~0.17.0",
     "codelyzer": "~0.0.19",
-    "compression-webpack-plugin": "^0.3.1",
-    "copy-webpack-plugin": "^2.1.3",
+  
     "es6-promise": "^3.1.2",
     "es6-promise-loader": "^1.0.1",
     "es6-shim": "^0.35.0",
@@ -93,7 +102,7 @@
     "exports-loader": "^0.6.3",
     "expose-loader": "^0.7.1",
     "file-loader": "^0.8.5",
-    "html-webpack-plugin": "^2.17.0",
+    
     "http-server": "^0.9.0",
     "imports-loader": "^0.6.5",
     "istanbul-instrumenter-loader": "^0.2.0",
@@ -110,7 +119,6 @@
     "phantomjs-polyfill": "0.0.2",
     "phantomjs-prebuilt": "^2.1.7",
     "protractor": "^3.2.2",
-    "raw-loader": "0.5.1",
     "remap-istanbul": "^0.6.3",
     "rimraf": "^2.5.2",
     "source-map-loader": "^0.1.5",
@@ -121,19 +129,11 @@
     "tslint-loader": "^2.1.3",
     "typedoc": "^0.3.12",
     "typescript": "~1.8.9",
-    "typings": "~1.0.3",
-    "url-loader": "^0.5.7",
-    "webpack": "^1.12.14",
-    "webpack-dev-server": "^1.14.1",
-    "webpack-md5-hash": "^0.0.5",
-    "webpack-merge": "^0.12.0"
+    "url-loader": "^0.5.7"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/angularclass/angular2-webpack-starter.git"
-  },
-  "bugs": {
-    "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
+    "url": "https://github.com/paynoattn/ng2-weather-app.git"
   },
   "engines": {
     "node": ">= 4.2.1",

@@ -1,1 +1,8 @@
 // SCSS Mixins go Here.
+
+@mixin fixLinks($color) {
+  a, a:hover, a:visited {
+    color: $color;
+    text-decoration: none;
+  }
+}
