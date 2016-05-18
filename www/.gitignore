@@ -1,4 +1,4 @@
 *.js
 *.map
+*.css
 env.js
-index.html
