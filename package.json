@@ -27,7 +27,7 @@
     "watch:dev:hmr": "npm run watch:dev -- --hot",
     "watch:test": "npm run test -- --auto-watch --no-single-run",
     "watch:prod": "npm run build:prod -- --watch",
-    "build": "npm run clean:dist && gulp run sass && webpack --config config/webpack.dev.js --progress --profile --colors --display-error-details --display-cached",
+    "build": "npm run build:prod",
     "prebuild:dev": "npm run clean:dist && npm run gulp sass",
     "build:dev": "webpack --config config/webpack.dev.js --progress --profile --colors --display-error-details --display-cached",
     "prebuild:prod": "npm run clean:dist && npm run gulp sass",
