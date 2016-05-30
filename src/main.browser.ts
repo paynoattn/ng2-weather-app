@@ -2,13 +2,18 @@
  * Providers provided by Angular
  */
 import { bootstrap } from '@angular/platform-browser-dynamic';
-import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
-import { HTTP_PROVIDERS }    from '@angular/http';
+/*
+* Platform and Environment
+* our providers/directives/pipes
+*/
+import { DIRECTIVES, PIPES, PROVIDERS } from './platform/browser';
+import { ENV_PROVIDERS } from './platform/environment';
 
-import { WeatherService } from './globals/weather.service';
-
-
-import { App } from './app/app.component';
+/*
+* App Component
+* our top level component that holds all of our components
+*/
+import { App, APP_PROVIDERS } from './app';
 
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
@@ -16,14 +21,21 @@ import { App } from './app/app.component';
  */
 export function main(initialHmrState?: any): Promise<any> {
 
-  return bootstrap(App,[
-    ROUTER_PROVIDERS,
-    HTTP_PROVIDERS,
-    WeatherService
+  return bootstrap(App, [
+    ...PROVIDERS,
+    ...ENV_PROVIDERS,
+    ...DIRECTIVES,
+    ...PIPES,
+    ...APP_PROVIDERS
   ])
   .catch(err => console.error(err));
+
 }
 
+/*
+ * Hot Module Reload
+ * experimental version by @gdi2290
+ */
 if ('development' === ENV && HMR === true) {
   // activate hot module reload
   let ngHmr = require('angular2-hmr');
