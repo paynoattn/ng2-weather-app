@@ -6,6 +6,9 @@ module.exports = function(config) {
   var testWebpackConfig = require('./webpack.test.js');
 
   config.set({
+
+    // base path that will be used to resolve all patterns (e.g. files, exclude)
+    basePath: '',
     
     plugins: [
       require("karma-jasmine"),
@@ -15,9 +18,6 @@ module.exports = function(config) {
       require("karma-sourcemap-loader"),
       require("karma-phantomjs-launcher")
     ],
-    
-    // base path that will be used to resolve all patterns (e.g. files, exclude)
-    basePath: '',
 
     /*
      * Frameworks to use
