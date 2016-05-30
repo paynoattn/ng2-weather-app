@@ -79,10 +79,10 @@
     ],
     "max-line-length": [
       true,
-      100
+      250
     ],
     "no-require-imports": false,
-    "no-trailing-whitespace": true,
+    "no-trailing-whitespace": false,
     "object-literal-sort-keys": false,
     "trailing-comma": [
       true,

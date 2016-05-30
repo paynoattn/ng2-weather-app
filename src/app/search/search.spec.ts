@@ -24,5 +24,4 @@ describe('Search', () => {
     search.handleSubmit();
     expect(console.log).toHaveBeenCalled();
   }));
-
 });

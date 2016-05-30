@@ -70,11 +70,11 @@ module.exports = {
        *
        * See: https://github.com/wbuchwalter/tslint-loader
        */
-      {
-        test: /\.ts$/,
-        loader: 'tslint-loader',
-        exclude: [helpers.root('node_modules')]
-      },
+      // {
+      //   test: /\.ts$/,
+      //   loader: 'tslint-loader',
+      //   exclude: [helpers.root('node_modules')]
+      // },
 
       /**
        * Source map loader support for *.js files
@@ -88,6 +88,7 @@ module.exports = {
         exclude: [
         // these packages have problems with their sourcemaps
         helpers.root('node_modules/rxjs'),
+        helpers.root('node_modules/@angular2-material'),
         helpers.root('node_modules/@angular')
       ]}
 
@@ -128,7 +129,9 @@ module.exports = {
        *
        * See: https://github.com/webpack/json-loader
        */
-      { test: /\.json$/, loader: 'json-loader', exclude: [helpers.root('src/index.html')] },
+      { test: /\.json$/, loader: 'json-loader', exclude: [helpers.root('www/index.html')] },
+      
+      { test: /\.html$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')] },
 
       /**
        * Raw loader support for *.css files
@@ -136,7 +139,10 @@ module.exports = {
        *
        * See: https://github.com/webpack/raw-loader
        */
-      { test: /\.css$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')] },
+      { 
+         test: /\.scss$/, 
+         loader: 'raw-loader!sass-loader!postcss-loader',
+         exclude: [helpers.root('www/index.html')] },
 
       /**
        * Raw loader support for *.html
@@ -144,7 +150,7 @@ module.exports = {
        *
        * See: https://github.com/webpack/raw-loader
        */
-      { test: /\.html$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')] }
+      //{ test: /\.html$/, loader: 'raw-loader', exclude: [helpers.root('www/index.html')] }
 
     ],
 
@@ -209,11 +215,11 @@ module.exports = {
    *
    * See: https://github.com/wbuchwalter/tslint-loader
    */
-  tslint: {
-    emitErrors: false,
-    failOnHint: false,
-    resourcePath: 'src'
-  },
+  // tslint: {
+  //   emitErrors: false,
+  //   failOnHint: false,
+  //   resourcePath: 'src'
+  // },
 
   /**
    * Include polyfills or mocks for various node stuff

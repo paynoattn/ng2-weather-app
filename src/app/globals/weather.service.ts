@@ -8,7 +8,7 @@ export class WeatherService {
   // Observable string sources
   public weatherLocation: string;
   public weatherSearchSource = new Subject<string>();
-  public weatherSearchEvent = this.weatherSearchSource.asObservable();
+  public weatherSearch$ = this.weatherSearchSource.asObservable();
 
   updateSearchStream() {
     this.weatherSearchSource.next(this.weatherLocation);

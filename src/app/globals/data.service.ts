@@ -10,7 +10,7 @@ export class DataService {
 
   private apiURL: string = 'http://api.openweathermap.org/data/2.5/';
   private authID: string = '&APPID=6d50b1ef93f03623771e062874a665c3';
-  private units: string = '&units=imperial'
+  private units: string = '&units=imperial';
 
   private serviceUrls = {
     byName: (name) => this.apiURL + 'weather?q=' + name + this.authID + this.units,
@@ -20,7 +20,7 @@ export class DataService {
 
   constructor (private http: Http) {}
 
-  getWeather(location): Observable<Weather[]> {
+  getWeather(location): Observable<Weather> {
     return this.http.get(this.serviceUrls.byName(location))
                     .map(this.transformData)
                     .catch(this.handleError);

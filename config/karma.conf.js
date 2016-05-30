@@ -9,6 +9,12 @@ module.exports = function(config) {
 
     // base path that will be used to resolve all patterns (e.g. files, exclude)
     basePath: '',
+
+    /*
+     * Frameworks to use
+     *
+     * available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+     */
     
     plugins: [
       require("karma-jasmine"),
@@ -18,17 +24,12 @@ module.exports = function(config) {
       require("karma-sourcemap-loader"),
       require("karma-phantomjs-launcher")
     ],
-
-    /*
-     * Frameworks to use
-     *
-     * available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-     */
+    
     frameworks: ['jasmine'],
 
     // list of files to exclude
     exclude: [ ],
-
+    
     /*
      * list of files / patterns to load in the browser
      *
@@ -78,7 +79,7 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
     /*
      * start these browsers
@@ -95,5 +96,4 @@ module.exports = function(config) {
      */
     singleRun: false
   });
-
 };
