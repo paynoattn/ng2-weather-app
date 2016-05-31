@@ -13,8 +13,6 @@ describe('App', () => {
         searchFormInput.sendKeys('seattle').then(function(){
             searchButton.click().then(function () {
                 // we are testing for busy instead of weather here because the weather is async;
-                //console.log(busy);
-                debugger;
                 expect(busy.isDisplayed()).toBe(true);
             });
         });

@@ -18,6 +18,6 @@ export class Search {
         this.weatherSvc.updateSearchStream();
         this.searchSubmit.emit({
             value: this.weatherSvc.weatherLocation
-        })
+        });
     }
 }
