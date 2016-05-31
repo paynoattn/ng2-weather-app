@@ -1,22 +1,14 @@
-import { Home } from './home/home.component';
-import { About } from './about/about.component';
-import { Example } from './example/example.component';
-
 export const routes = [
   {
-    path: '/',
-    name: 'Get Weather',
-    component: Home,
-    useAsDefault: true
+    id: 'home',
+    name: 'Get Weather'
   },
   {
-    path: '/about',
-    name: 'About',
-    component: About
+    id: 'about',
+    name: 'About'
   },
   {
-    path: '/examples',
-    name: 'Examples',
-    component: Example
+    id: 'examples',
+    name: 'Examples'
   }
 ];

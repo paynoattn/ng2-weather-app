@@ -7,12 +7,7 @@
     "sourceMap": true,
     "noEmitHelpers": true
   },
-  "exclude": [
-    "./node_modules",
-    "./typings/main.d.ts",
-    "./typings/main"
-  ],
-  "filesGlob": [
+  "files": [
     "./src/client/**/*.ts",
     "!./node_modules/**",
     "./src/custom-typings.d.ts",

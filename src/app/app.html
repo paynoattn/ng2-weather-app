@@ -1,19 +1,21 @@
 <main>
   <header>
-    <h1><a [routerLink]="['Get Weather']">Angular Weather App</a></h1>
+    <h1><a  href="javascript:void(0)"(click)="changeRoute('home')">Angular Weather App</a></h1>
     <nav>
       <ul class="app-nav">
         <li *ngFor='let route of appRoutes'>
-              <a [routerLink]="[route.name]">
+              <a href="javascript:void(0)" (click)="changeRoute(route.id)">
                 {{route.name}}
               </a>
             </li>
       </ul>
     </nav>
       
-    <search-form class="top"></search-form>
+    <search-form class="top" (searchSubmit)="changeRoute('home')"></search-form>
   </header>
   <article>
-    <router-outlet></router-outlet>
+    <home class="route" [ngClass]="{active: currentRoute === 'home'}"></home>
+    <about class="route"  [ngClass]="{active: currentRoute === 'about'}"></about>
+    <example class="route"  [ngClass]="{active: currentRoute === 'examples'}"></example>
   </article>
 </main>

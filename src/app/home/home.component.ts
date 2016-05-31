@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription }   from 'rxjs/Subscription';
 
-import { WeatherService } from '../../globals/weather.service';
-import { Weather } from '../../globals/weather'
+import { WeatherService } from '../globals/weather.service';
+import { Weather } from '../globals/weather';
+import { DataService } from '../globals/data.service';
 
 import { Search } from '../search/search.component';
 
@@ -11,40 +13,45 @@ let homeTemplate = require('./home.html');
     selector: 'home',
     template: homeTemplate,
     directives: [Search],
-    styles: [ require('./home.scss') ]
+    styles: [ require('./home.scss') ],
+    providers: [ DataService ]
 })
 
 export class Home implements OnInit { 
     
-    public weatherSvc: any;
     public busy: boolean = false;
     public weather: Weather;
     public errorMessage: Object;
+    private subscription: Subscription;
     
-    constructor( weatherSvc: WeatherService) {
-        this.weatherSvc = weatherSvc;
+    constructor( public weatherSvc: WeatherService, private dataSvc: DataService) {
+        this.subscription = weatherSvc.weatherSearch$.subscribe(
+            weatherLocation => {
+                this.getWeather();
+            });
     }
     
     ngOnInit() {
         console.log('home');
-        this.getWeather();
     }
     
     getWeather() {
-        if (this.weatherSvc.weatherLocation) {
-            this.busy = true;
-            console.log('searching weather for ', this.weatherSvc.weatherLocation);
-            this.weatherSvc.getWeather()
-                .subscribe(
-                    weather => {
-                        console.log(weather)
-                        this.busy = false;
-                        this.weather = weather;
-                    },
-                    error => {
-                        this.busy = false;
-                        this.errorMessage = error.message;
-                     })
-        }
+        this.busy = true;
+        return this.dataSvc.getWeather(this.weatherSvc.weatherLocation)
+            .subscribe(
+                weather => {
+                    this.busy = false;
+                    this.weather = weather;
+                    console.log('succesfully retrieved weather for', this.weather);
+                },
+                error => {
+                    this.busy = false;
+                    this.errorMessage = error.message;
+                    });
+    }
+    
+    ngOnDestroy() {
+        // prevent memory leak when component destroyed
+        this.subscription.unsubscribe();
     }
 }

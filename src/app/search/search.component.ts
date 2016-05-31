@@ -1,29 +1,21 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router-deprecated';
 
-import { WeatherService } from '../../globals/weather.service';
-
-let searchTemplate = require('./search.html');
+import { WeatherService } from '../globals/weather.service';
 
 @Component({
     selector: 'search-form',
-    template: searchTemplate
+    template: require('./search.html')
 })
 
 export class Search {
-    
+
     @Output() searchSubmit = new EventEmitter();
 
-    public weatherSvc;
-    private router;
-   
-    constructor( router: Router, weatherSvc : WeatherService ){
-        this.weatherSvc = weatherSvc;
-        this.router = router;
-    }
+    constructor( public weatherSvc: WeatherService ) { }
     
-    handleSubmit(){
-        this.router.navigate(['Get Weather']);
+    handleSubmit() {
+        console.log('searching weather for', this.weatherSvc.weatherLocation);
+        this.weatherSvc.updateSearchStream();
         this.searchSubmit.emit({
             value: this.weatherSvc.weatherLocation
         })
